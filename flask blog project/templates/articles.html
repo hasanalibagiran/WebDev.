@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block body  %}
+<h2>Articles</h2>
+<hr>
+
+{% if articles %}
+<form action="/search", method="post">
+    <input type="text" name="keyword" id="search" placeholder="search">
+    <button type="submit" class="btn btn-sm btn-success" >Search</button>
+</form>
+<br>
+<ul class="list-group">
+    {% for article in articles  %}
+
+    <li class="list-group-item"><h5><a href="/article/{{article.id}}">{{article.title}} - {{article.author}}</a></h5></li>
+
+    {% endfor %}
+</ul>
+{% else %}
+
+<div class="alert alert-danger"> There is no article on this blog.  </div>
+
+{% endif %}
+
+{% endblock %}
